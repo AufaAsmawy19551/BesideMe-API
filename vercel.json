@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
       {
-          "src": "./bin/www.mjs",
+          "src": "index.mjs",
           "use": "@vercel/node"
       }
   ],

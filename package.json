@@ -21,7 +21,7 @@
   "devDependencies": {
     "nodemon": "^1.14.9"
   },
-  "main": "app.mjs",
+  "main": "index.mjs",
   "keywords": [],
   "author": "",
   "license": "ISC",
