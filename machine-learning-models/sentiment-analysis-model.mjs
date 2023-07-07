@@ -7,7 +7,7 @@ class SentimentAnalysisModel {
 
   static async getInstance(progress_callback = null) {
     if(! this.#instance){
-      // env.cacheDir = './machine-learning-models/models';
+      env.cacheDir = './machine-learning-models/models';
       this.#instance = await pipeline(this.#task, this.#model);
     }
 
