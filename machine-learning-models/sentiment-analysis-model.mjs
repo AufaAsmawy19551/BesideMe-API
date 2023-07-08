@@ -1,4 +1,10 @@
 import { pipeline, env } from '@xenova/transformers';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 class SentimentAnalysisModel {
   static #task = 'sentiment-analysis';
@@ -7,7 +13,7 @@ class SentimentAnalysisModel {
 
   static async getInstance(progress_callback = null) {
     if(! this.#instance){
-      env.cacheDir = './machine-learning-models/models';
+      env.cacheDir = path.join(__dirname, 'models');
       this.#instance = await pipeline(this.#task, this.#model);
     }
 
