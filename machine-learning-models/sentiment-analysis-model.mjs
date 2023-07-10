@@ -2,7 +2,7 @@ import { pipeline, env } from '@xenova/transformers';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import {mkdirp} from 'mkdirp';
+import { mkdirp } from 'mkdirp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,8 +13,13 @@ class SentimentAnalysisModel {
   static #instance = null;
 
   static async getInstance(progress_callback = null) {
-    if(! this.#instance){
-      mkdirp('./machine-learning-models/models');
+    if (!this.#instance) {
+      mkdirp('./machine-learning-models/models', '0777', function (err) {
+
+        // path exists unless there was an error
+        console.log('path exists unless there was an error');
+
+      });
       // env.cacheDir = path.join(process.cwd(), 'models');
       env.cacheDir = './machine-learning-models/models';
       this.#instance = await pipeline(this.#task, this.#model);
