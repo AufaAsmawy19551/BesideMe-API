@@ -14,14 +14,14 @@ class SentimentAnalysisModel {
 
   static async getInstance(progress_callback = null) {
     if (!this.#instance) {
-      mkdirp('./machine-learning-models/models', '0777', function (err) {
+      mkdirp('/tmp/huggingface/models', '0777', function (err) {
 
         // path exists unless there was an error
         console.log('path exists unless there was an error');
 
       });
       // env.cacheDir = path.join(process.cwd(), 'models');
-      env.cacheDir = './machine-learning-models/models';
+      env.cacheDir = '/tmp/huggingface/models';
       this.#instance = await pipeline(this.#task, this.#model);
     }
 
